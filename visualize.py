@@ -32,8 +32,8 @@ def main():
     engine = create_engine('mysql+mysqlconnector://root@localhost/kryptowaluty')
 
     # Definiowanie zakresu dat
-    start_date = '2023-11-29'
-    end_date = '2023-11-30'
+    start_date = '2024-01-01'
+    end_date = '2024-11-30'
 
     # Wykresy dla każdej kryptowaluty w określonym przedziale czasowym
     plot_data(engine, 'btc_usd_historyczne', 'btc_usd_predykcja', 'BTC/USD', start_date, end_date)
