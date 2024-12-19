@@ -30,7 +30,6 @@ def insert_data(file_path, table_name):
 # Wczytywanie danych dla różnych kryptowalut
 insert_data('Bitstamp_BTCUSD_1h.csv', 'btc_usd_historyczne')
 insert_data('Bitstamp_ETHUSD_1h.csv', 'eth_usd_historyczne')
-insert_data('Bitstamp_XLMUSD_1h.csv', 'xlm_usd_historyczne')
 insert_data('Bitstamp_LTCUSD_1h.csv', 'ltc_usd_historyczne')
 insert_data('Bitstamp_XRPUSD_1h.csv', 'xrp_usd_historyczne')
 insert_data('Bitstamp_BCHUSD_1h.csv', 'bch_usd_historyczne')
