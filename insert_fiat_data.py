@@ -11,9 +11,9 @@ conn = mysql.connector.connect(
 )
 cursor = conn.cursor()
 
-# Funkcja do wstawiania danych do tabeli kursy_fiat
+# Funkcja do wstawiania danych do tabeli kursy_fiat_historyczne
 def insert_data(date, time, code, rate):
-    sql = "INSERT INTO kursy_fiat (data, czas, code, rate) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO kursy_fiat_historyczne (data, czas, code, rate) VALUES (%s, %s, %s, %s)"
     values = (date, time, code, rate)
     cursor.execute(sql, values)
     conn.commit()
@@ -40,7 +40,7 @@ with open('archiwum_tab_a_2024.csv', mode='r') as file:
             if code.startswith('100'):
                 rate /= 100
                 code = code[3:]
-            elif code.startswith('1'):
+            elif code.startswith('1') and len(code) > 3:
                 code = code[1:]
 
             insert_data(date, time, code, rate)
