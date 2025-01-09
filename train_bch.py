@@ -4,6 +4,7 @@ from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM
+from tensorflow.keras.callbacks import EarlyStopping
 
 # Połączenie z bazą danych MySQL i wczytanie danych
 engine = create_engine('mysql+mysqlconnector://root:@localhost/kryptowaluty')
@@ -43,7 +44,8 @@ model_bch.add(LSTM(50, return_sequences=False))
 model_bch.add(Dense(25))
 model_bch.add(Dense(1))
 
-# Kompilacja i trenowanie modelu LSTM
+# Kompilacja i trenowanie modelu LSTM z wczesnym zatrzymaniem
 model_bch.compile(optimizer='adam', loss='mean_squared_error')
-model_bch.fit(X_train, y_train, batch_size=1, epochs=1)
+early_stopping = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+model_bch.fit(X_train, y_train, validation_split=0.2, batch_size=1, epochs=20, callbacks=[early_stopping])
 model_bch.save('bch_usd_lstm_model.h5')
