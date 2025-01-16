@@ -14,7 +14,8 @@ def insert_data(file_path, table_name):
     cursor = conn.cursor()
     with open(file_path, mode='r') as file:
         reader = csv.reader(file)
-        for row in reader:
+        rows = list(reader)  # Wczytaj wszystkie wiersze do listy
+        for row in reversed(rows):  # Iteruj od końca
             unix_timestamp = int(row[0])
             date_time_str = datetime.fromtimestamp(unix_timestamp).strftime('%Y-%m-%d %H:%M:%S')
             date_str, time_str = date_time_str.split(' ')

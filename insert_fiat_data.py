@@ -19,7 +19,7 @@ def insert_data(date, time, code, rate):
     conn.commit()
 
 # Wczytywanie danych z pliku CSV
-with open('archiwum_tab_a_2024.csv', mode='r') as file:
+with open('archiwum_tab_a_2025.csv', mode='r') as file:
     reader = csv.reader(file, delimiter='\t')
     headers = next(reader)[0].split(';')  # Podział nagłówków na komórki
 
